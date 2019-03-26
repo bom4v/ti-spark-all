@@ -42,6 +42,41 @@ checksums in update := Nil
 
 libraryDependencies += "org.specs2" %% "specs2-core" % "4.4.1" % "test"
 
+libraryDependencies ++= (version.value match {
+    case v if v.contains("spark2.3") => Seq(
+      "org.bom4v.ti" %% "ti-serializers-customers" % "0.0.1-spark2.3",
+      "org.bom4v.ti" %% "ti-serializers-calls" % "0.0.1-spark2.3"
+    )
+    case v if v.contains("spark2.2") => Seq(
+      "org.bom4v.ti" %% "ti-serializers-customers" % "0.0.1-spark2.2",
+      "org.bom4v.ti" %% "ti-serializers-calls" % "0.0.1-spark2.2"
+    )
+  }
+)  
+    
+// Hadoop
+//val hadoopVersion = "3.1.1"
+//libraryDependencies += "org.apache.hadoop" % "hadoop-common" % hadoopVersion
+//libraryDependencies += "org.apache.hadoop" % "hadoop-hdfs" % hadoopVersion
+//libraryDependencies += "org.apache.hadoop" % "hadoop-yarn-client" % hadoopVersion
+
+// Spark
+libraryDependencies ++= (version.value match {
+    case v if v.contains("spark2.3") => Seq(
+        "org.apache.spark" %% "spark-core" % "2.3.2",
+        "org.apache.spark" %% "spark-sql" % "2.3.2",
+        "org.apache.spark" %% "spark-mllib" % "2.3.2",
+        "org.apache.spark" %% "spark-hive" % "2.3.2"
+    )
+    case v if v.contains("spark2.2") => Seq(
+        "org.apache.spark" %% "spark-core" % "2.2.0",
+        "org.apache.spark" %% "spark-sql" % "2.2.0",
+        "org.apache.spark" %% "spark-mllib" % "2.2.0",
+        "org.apache.spark" %% "spark-hive" % "2.2.0"
+    )
+  }
+)
+
 javacOptions in Compile ++= Seq("-source", "1.8",  "-target", "1.8")
 
 scalacOptions ++= Seq("-deprecation", "-feature")
