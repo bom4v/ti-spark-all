@@ -62,7 +62,8 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2-core" % "4.19.0" % "test",
   "org.scalactic" %% "scalactic" % "3.2.14",
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
-  "com.github.mrpowers" %% "spark-fast-tests" % "1.3.0" % "test"
+  "com.github.mrpowers" %% "spark-fast-tests" % "1.3.0" % "test",
+  "org.bom4v.ti" %% "ti-spark-data-generation" % "0.0.1"
 )
 
 // Compilation options
